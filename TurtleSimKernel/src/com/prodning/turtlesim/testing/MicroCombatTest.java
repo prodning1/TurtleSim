@@ -9,8 +9,6 @@ import com.prodning.turtlesim.combat.data.TechLevels;
 
 public class MicroCombatTest {
 	public static void main(String[] args) {
-		TechLevels levels = new TechLevels();
-		
 		HashMap<String, Integer> cruiserRapidFire = new HashMap<String, Integer>();
 		cruiserRapidFire.put("LIGHT_FIGHTER", 6);
 		cruiserRapidFire.put("ESPIONAGE_PROBE", 5);
