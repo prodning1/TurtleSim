@@ -1,6 +1,5 @@
 package com.prodning.turtlesim.testing;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,8 +14,8 @@ import com.prodning.turtlesim.parse.EntityFileParser;
 
 public class GenerateObjectsFromXMLTest {
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
-		Fleet fleet1 = EntityFileParser.getFleetById(new File("resources/test_fleet_1.xml"));
-		Fleet fleet2 = EntityFileParser.getFleetById(new File("resources/test_fleet_2.xml"));
+		Fleet fleet1 = EntityFileParser.getFleetById("F0001");
+		Fleet fleet2 = EntityFileParser.getFleetById("F0002");
 		
 		System.out.println(fleet1.getFleetComposition().toString());
 		System.out.println(fleet2.getFleetComposition().toString());
