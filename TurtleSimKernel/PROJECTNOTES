@@ -1,0 +1,35 @@
+Current kernel goals:
+	Add support for ACS combat
+	Multithread the combat simulations
+		Macro/micro?
+	Defense rebuilding estimates
+	Full averaged combat reports
+	Simulation intent object
+	Saving simulation intent to XML (fleet by reference or by value?)
+	
+	Settings
+		Defense into debris
+		debris ratio(s)
+
+Current client (android) goals:
+	exist
+
+	Hierarchy of activities:
+		Combat:
+			Fleet selection
+			 -List of available fleets, select attack/defend/neither
+			 -Shows fleet name, number of ships (military/civilian/defense?)
+			 -Scrolling gridlayout? 2 columns
+				Clicking a fleet opens a new activity to edit fleet
+				 -Should have every type of ship and defense in entities.xml, and allow any number of them.
+				  if the user crashes the program or has 15 shield domes it's their own fault
+				 -Should also have tech levels PER FLEET so that ACS is calculated correctly
+			Simulate/results
+			Save/load simulation
+		Non-combat:
+				
+	
+	Hierarchy of settings:
+		Combat:
+			Defense to debris
+			debris ratio(s)
