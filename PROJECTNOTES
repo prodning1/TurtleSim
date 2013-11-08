@@ -6,6 +6,7 @@ Current kernel goals:
 	Full averaged combat reports
 	Simulation intent object
 	Saving simulation intent to XML (fleet by reference or by value?)
+	Implement a proper logging system
 	
 	Settings
 		Defense into debris
