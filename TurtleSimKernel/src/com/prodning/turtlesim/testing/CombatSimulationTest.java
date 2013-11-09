@@ -8,6 +8,7 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.xml.sax.SAXException;
 
+import com.prodning.turtlesim.combat.CombatSettings;
 import com.prodning.turtlesim.combat.CombatSimulation;
 import com.prodning.turtlesim.combat.Fleet;
 import com.prodning.turtlesim.combat.data.FleetCombatUnit;
@@ -18,6 +19,10 @@ import com.prodning.turtlesim.parse.EntityFileParser;
 
 public class CombatSimulationTest {
 	public static void main(String[] args) throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
+		CombatSettings.setDefenseToDebris(true);
+		CombatSettings.setShipDebrisRatio(0.3);
+		CombatSettings.setDefenseDebrisRatio(0.3);
+		
 		System.out.print("Parsing fleets...");
 		Fleet fleet1 = EntityFileParser.getFleetById("F0001");
 		Fleet fleet2 = EntityFileParser.getFleetById("F0002");
@@ -46,7 +51,7 @@ public class CombatSimulationTest {
 		TechLevels macroCombatInformation = new TechLevels();
 
 		System.out.print("Simulating combat...");
-		SimulationResult result = CombatSimulation.SimulateFleetCombat(fleets, 1);
+		SimulationResult result = CombatSimulation.SimulateFleetCombat(fleets, 1000);
 		System.out.println("done\n");
 		
 		System.out.println();

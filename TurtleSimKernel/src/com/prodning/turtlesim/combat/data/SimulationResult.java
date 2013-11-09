@@ -15,12 +15,6 @@ public class SimulationResult {
 
 	private HashMap<String, FCUSimulationResult> fcuSimResults = new HashMap<String, FCUSimulationResult>();
 
-	private Resource debrisField = new Resource();
-	private double attackerWinChance = 0;
-	private double defenderWinChance = 0;
-	private double drawChance = 0;
-	private double rounds = 0;
-
 	private Resource debrisFieldSum = new Resource();
 	private double attackerWins = 0;
 	private double defenderWins = 0;
@@ -43,22 +37,17 @@ public class SimulationResult {
 
 			// Get attacker and defender debris field contributions
 			for (CombatEntity entity : fcu.getLosses()) {
-				if (entity.getType() == CombatEntityType.SHIP
-						|| CombatSettings.getDefenseToDebris()) {
+				if (entity.getType() == CombatEntityType.SHIP || CombatSettings.getDefenseToDebris()) {
 					Resource debrisResource;
 
 					if (entity.getType() == CombatEntityType.SHIP)
-						debrisResource = EntityFileParser.getResourceById(
-								entity.getEntityID()).scalar(
-								CombatSettings.getShipDebrisRatio());
+						debrisResource = EntityFileParser.getResourceById(entity.getEntityID()).scalar(CombatSettings.getShipDebrisRatio());
 					else if (entity.getType() == CombatEntityType.DEFENSE)
-						debrisResource = EntityFileParser.getResourceById(
-								entity.getEntityID()).scalar(
-								CombatSettings.getDefenseDebrisRatio());
+						debrisResource = EntityFileParser.getResourceById(entity.getEntityID()).scalar(CombatSettings.getDefenseDebrisRatio());
 					else {
 						// TODO error checking
-						debrisResource = new Resource(-100000000, -100000000,
-								-100000000);
+						System.out.println("Error in debris field calculation");
+						debrisResource = new Resource(-100000000, -100000000, -100000000);
 					}
 
 					// no deut in debris field
@@ -69,11 +58,6 @@ public class SimulationResult {
 			}
 
 			debrisFieldSum.addThis(debrisFieldThisCombat);
-
-			debrisField = new Resource(debrisFieldSum.getMetal()
-					/ numberOfSimulations, debrisFieldSum.getCrystal()
-					/ numberOfSimulations, debrisFieldSum.getDeuterium()
-					/ numberOfSimulations);
 
 			HashMap<String, Integer> newComposition = Fleet.compositionIdToName(fcu.getFleet().getFleetComposition());
 			HashMap<String, Integer> fleetCompositionSum;
@@ -91,20 +75,11 @@ public class SimulationResult {
 			}
 		}
 
-		attackerWins += (macroCombatResult.getResultType() == ResultType.ATTACKER_WIN ? 1
-				: 0);
-		defenderWins += (macroCombatResult.getResultType() == ResultType.DEFENDER_WIN ? 1
-				: 0);
+		attackerWins += (macroCombatResult.getResultType() == ResultType.ATTACKER_WIN ? 1 : 0);
+		defenderWins += (macroCombatResult.getResultType() == ResultType.DEFENDER_WIN ? 1 : 0);
 		draws += (macroCombatResult.getResultType() == ResultType.DRAW ? 1 : 0);
 
-		attackerWinChance = attackerWins / numberOfSimulations;
-		defenderWinChance = defenderWins / numberOfSimulations;
-		drawChance = draws / numberOfSimulations;
-
 		roundsSum += macroCombatResult.getRounds();
-
-		rounds = roundsSum / numberOfSimulations;
-
 	}
 
 	public int getNumberOfSimulations() {
@@ -112,22 +87,25 @@ public class SimulationResult {
 	}
 
 	public Resource getDebrisField() {
-		return debrisField;
+		return new Resource(debrisFieldSum.getMetal()
+				/ numberOfSimulations, debrisFieldSum.getCrystal()
+				/ numberOfSimulations, debrisFieldSum.getDeuterium()
+				/ numberOfSimulations);
 	}
 
 	public double getAttackerWinChance() {
-		return attackerWinChance;
+		return (double) attackerWins / numberOfSimulations;
 	}
 
 	public double getDefenderWinChance() {
-		return defenderWinChance;
+		return (double) defenderWins / numberOfSimulations;
 	}
 
 	public double getDrawChance() {
-		return drawChance;
+		return (double) draws / numberOfSimulations;
 	}
 
 	public double getRounds() {
-		return rounds;
+		return (double) roundsSum / numberOfSimulations;
 	}
 }

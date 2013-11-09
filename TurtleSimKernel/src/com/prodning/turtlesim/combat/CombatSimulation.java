@@ -17,7 +17,7 @@ import com.prodning.turtlesim.combat.data.SimulationResult;
 import com.prodning.turtlesim.combat.data.TechLevels;
 
 public class CombatSimulation {
-	static int verbosity = 4;
+	static int verbosity = 0;
 	
 	public static SimulationResult SimulateFleetCombat(List<FleetCombatUnit> fleetCombatUnits, int numberOfSimulations) {
 		SimulationResult result = new SimulationResult();
@@ -92,6 +92,11 @@ public class CombatSimulation {
 					if (entity.getHull() > 0)
 						entity.restoreShield();
 				}
+			}
+			
+			if(verbosity >= 3) {
+				System.out.println("Attacking fleet:\n" + fleetCombatUnits.get(0).getFleet().toString());
+				System.out.println("Defending fleet:\n" + fleetCombatUnits.get(1).getFleet().toString());
 			}
 			
 			for (FleetCombatUnit fcu : fleetCombatUnits) {
