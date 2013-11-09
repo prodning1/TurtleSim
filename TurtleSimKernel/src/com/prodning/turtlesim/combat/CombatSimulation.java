@@ -3,11 +3,9 @@
 package com.prodning.turtlesim.combat;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 import com.prodning.turtlesim.combat.CombatEntity.CombatEntityType;
 import com.prodning.turtlesim.combat.Fleet.CombatGroup;
@@ -59,7 +57,12 @@ public class CombatSimulation {
 			else if(fcu.getCombatGroup() == CombatGroup.DEFENDING)
 				defenders.add(fcu);
 			//else error checking
+			
+			System.out.println(fcu.getCombatGroup());
 		}
+		
+		Boolean attackerDestroyed = true;
+		Boolean defenderDestroyed = true;
 		
 		//Simulate
 		do {
@@ -88,7 +91,7 @@ public class CombatSimulation {
 			}
 			
 			for (FleetCombatUnit fcu : fleetCombatUnits) {
-				for (CombatEntity attackingEntity : this) {
+				for (CombatEntity attackingEntity : fcu.getFleet()) {
 					Boolean rapidFireSuccess;
 
 					if (attackingEntity.getType() == CombatEntityType.DEFENSE) {
@@ -98,12 +101,16 @@ public class CombatSimulation {
 					}
 
 					do {
+						CombatEntity defendingEntity;
+						
 						// Pick a random defender to attack
-						CombatEntity defendingEntity = chooseR
-
+						if(fcu.getCombatGroup() == CombatGroup.ATTACKING)
+							defendingEntity = chooseRandomEntityFromACS(defenders);
+						else
+							defendingEntity = chooseRandomEntityFromACS(attackers);
+						
 						// defending unit receives the attack
-						MicroCombatResult mcr = defendingEntity
-								.receiveAttack(attackingEntity);
+						MicroCombatResult mcr = defendingEntity.receiveAttack(attackingEntity);
 
 						// check for successful rapid fire roll
 						rapidFireSuccess = mcr.getRapidFireSuccess();
@@ -117,27 +124,18 @@ public class CombatSimulation {
 				}
 			}
 			
-			//check for losses and move them to the appropriate lists
-			Iterator<CombatEntity> iter = this.iterator();
-			while(iter.hasNext()) {
-				CombatEntity c = iter.next();
-				
-				if(c.getHull() <= 0) {
-					attackerLosses.add(c);
-					iter.remove();
+			// check for losses and move them to the appropriate lists
+			for (FleetCombatUnit fcu : fleetCombatUnits) {
+				Iterator<CombatEntity> iter = fcu.getFleet().iterator();
+				while (iter.hasNext()) {
+					CombatEntity c = iter.next();
+					
+					if (c.getHull() <= 0) {
+						fcu.getLosses().add(c);
+						iter.remove();
+					}
 				}
 			}
-			
-			iter = defendingFleet.iterator();
-			while(iter.hasNext()) {
-				CombatEntity c = iter.next();
-				
-				if(c.getHull() <= 0) {
-					defenderLosses.add(c);
-					iter.remove();
-				}
-			}
-			
 			
 //			if (verbosity >= 2) {
 //				System.out.println();
@@ -149,25 +147,39 @@ public class CombatSimulation {
 //				System.out.println();
 //			}
 			
-		} while ((++round < 6) && (this.size() > 0) && (defendingFleet.size() > 0));
+			
+			//both fleet unions are destroyed unless we find ships
+			attackerDestroyed = true;
+			defenderDestroyed = true;
+			
+			for (FleetCombatUnit fcu : fleetCombatUnits) {
+				if(fcu.getFleet().size() > 0) {
+					switch(fcu.getCombatGroup()) {
+						case ATTACKING:
+							attackerDestroyed = false;
+							break;
+						case DEFENDING:
+							defenderDestroyed = false;
+							break;
+					}
+				}
+			}
+		} while ((++round < 6) && !attackerDestroyed && !defenderDestroyed);
 		
 		MacroCombatResult mcr = new MacroCombatResult();
 		
-		mcr.setAttackerLosses(attackerLosses);
-		mcr.setDefenderLosses(defenderLosses);
-		mcr.setAttackerRemains(this.deepClone());
-		mcr.setDefenderRemains(defendingFleet.deepClone());
+		mcr.setFleetCombatUnits(fleetCombatUnits);
 		mcr.setRounds(round);
 		
 		//determine result type
-		if((this.size() > 0) && (defendingFleet.size() == 0)) {
+		if((!attackerDestroyed) && (defenderDestroyed)) {
 			mcr.setResultType(ResultType.ATTACKER_WIN);
 		}
-		if((defendingFleet.size() > 0) && (this.size() == 0)) {
+		if((attackerDestroyed) && (!defenderDestroyed)) {
 			mcr.setResultType(ResultType.DEFENDER_WIN);
 		}
-		if(((defendingFleet.size() > 0) && (this.size() > 0)) ||
-		   ((defendingFleet.size() == 0) && (this.size() == 0))) {
+		if(attackerDestroyed.equals(defenderDestroyed)) {
+			//either both fleets still alive or both destroyed (unlikely but possible)
 			mcr.setResultType(ResultType.DRAW);
 		}
 		
@@ -186,8 +198,6 @@ public class CombatSimulation {
 //		}
 		
 		return mcr;
-		
-		return null;
 	}
 	
 	private static CombatEntity chooseRandomEntityFromACS(List<FleetCombatUnit> fleetUnion) {
