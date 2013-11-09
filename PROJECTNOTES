@@ -4,7 +4,8 @@ Current global goals:
 Current kernel goals (in order of priority):
 	Add support for ACS combat
 	 -CombatSimulation should include a unified method for pitting any number of fleets in a battle
-	  -
+
+	Clean up data flow... there are too many damn Result classes and wrappers
 
 	Full averaged combat reports (with ACS support)
 	 -Part of SimulationResult
