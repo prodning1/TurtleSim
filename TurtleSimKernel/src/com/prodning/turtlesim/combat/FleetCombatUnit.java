@@ -1,17 +1,20 @@
 package com.prodning.turtlesim.combat;
 
+import java.util.ArrayList;
+
 import com.prodning.turtlesim.combat.Fleet.CombatGroup;
 import com.prodning.turtlesim.combat.data.TechLevels;
 
 public class FleetCombatUnit {
 	private Fleet fleet;
+	private ArrayList<CombatEntity> losses = new ArrayList<CombatEntity>();
 	private String name;
 	private CombatGroup combatGroup;
 	private TechLevels techLevels;
 	
-	public FleetCombatUnit(Fleet fleet, String name) {
+	public FleetCombatUnit(Fleet fleet) {
 		this.fleet = fleet;
-		this.name = name;
+		this.name = fleet.getId();
 	}
 	
 	public CombatGroup getCombatGroup() {
@@ -26,5 +29,7 @@ public class FleetCombatUnit {
 		return fleet;
 	} public String getName() {
 		return name;
+	} public ArrayList<CombatEntity> getLosses() {
+		return losses;
 	}
 }

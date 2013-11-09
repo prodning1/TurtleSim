@@ -11,6 +11,7 @@ import com.prodning.turtlesim.parse.EntityFileParser;
 
 public class SimulationResult {
 	private int numberOfSimulations = 0;
+	
 	private Resource attackerLosses = new Resource();
 	private Resource defenderLosses = new Resource();
 	private Resource debrisField = new Resource();
