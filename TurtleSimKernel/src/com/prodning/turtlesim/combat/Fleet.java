@@ -5,13 +5,10 @@ import java.util.HashMap;
 
 import com.prodning.turtlesim.parse.EntityFileParser;
 
-
+/**
+ * 
+ */
 public class Fleet extends ArrayList<CombatEntity> {
-	public static enum CombatGroup {
-		ATTACKING,
-		DEFENDING;
-	}
-	
 	private int numberOfShips = 0;
 	private String id;
 	

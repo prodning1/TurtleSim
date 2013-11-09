@@ -1,20 +1,24 @@
-package com.prodning.turtlesim.combat;
+package com.prodning.turtlesim.combat.data;
 
 import java.util.ArrayList;
 
-import com.prodning.turtlesim.combat.Fleet.CombatGroup;
-import com.prodning.turtlesim.combat.data.TechLevels;
+import com.prodning.turtlesim.combat.CombatEntity;
+import com.prodning.turtlesim.combat.Fleet;
 
 public class FleetCombatUnit {
+	public static enum CombatGroup {
+		ATTACKING,
+		DEFENDING;
+	}
 	private Fleet fleet;
 	private ArrayList<CombatEntity> losses = new ArrayList<CombatEntity>();
-	private String name;
+	private String id;
 	private CombatGroup combatGroup;
 	private TechLevels techLevels;
 	
 	public FleetCombatUnit(Fleet fleet) {
 		this.fleet = fleet;
-		this.name = fleet.getId();
+		this.id = fleet.getId();
 	}
 	
 	public CombatGroup getCombatGroup() {
@@ -27,9 +31,20 @@ public class FleetCombatUnit {
 		this.techLevels = techLevels;
 	} public Fleet getFleet() {
 		return fleet;
-	} public String getName() {
-		return name;
+	} public String getId() {
+		return id;
 	} public ArrayList<CombatEntity> getLosses() {
 		return losses;
+	}
+	
+	public FleetCombatUnit deepClone() {
+		Fleet newFleet = fleet.deepClone();
+		
+		FleetCombatUnit result = new FleetCombatUnit(newFleet);
+		
+		result.setCombatGroup(combatGroup);
+		result.setTechLevels(techLevels.clone());
+		
+		return result;
 	}
 }

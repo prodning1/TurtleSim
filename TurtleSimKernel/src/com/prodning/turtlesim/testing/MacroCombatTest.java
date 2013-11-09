@@ -1,13 +1,17 @@
 package com.prodning.turtlesim.testing;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.prodning.turtlesim.combat.CombatEntity;
-import com.prodning.turtlesim.combat.Fleet;
 import com.prodning.turtlesim.combat.CombatEntity.CombatEntityType;
+import com.prodning.turtlesim.combat.CombatSimulation;
+import com.prodning.turtlesim.combat.Fleet;
+import com.prodning.turtlesim.combat.data.FleetCombatUnit;
 import com.prodning.turtlesim.combat.data.MacroCombatResult;
-import com.prodning.turtlesim.combat.data.TechLevels;
+import com.prodning.turtlesim.combat.data.FleetCombatUnit.CombatGroup;
 import com.prodning.turtlesim.combat.data.MacroCombatResult.ResultType;
+import com.prodning.turtlesim.combat.data.TechLevels;
 
 public class MacroCombatTest {
 	public static void main(String[] args) {
@@ -50,10 +54,20 @@ public class MacroCombatTest {
 //						CombatEntityType.DEFENSE, 2000, 20, 80,
 //						null));
 
-			attackingFleet.setTechLevels(new TechLevels());
-			defendingFleet.setTechLevels(new TechLevels());
+			FleetCombatUnit fcu1 = new FleetCombatUnit(attackingFleet);
+			fcu1.setCombatGroup(CombatGroup.ATTACKING);
+			FleetCombatUnit fcu2 = new FleetCombatUnit(defendingFleet);
+			fcu2.setCombatGroup(CombatGroup.DEFENDING);
 			
-			MacroCombatResult result = attackingFleet.attackFleet(defendingFleet);
+			ArrayList<FleetCombatUnit> fleets = new ArrayList<FleetCombatUnit>();
+			
+			fleets.add(fcu1);
+			fleets.add(fcu2);
+			
+			fcu1.setTechLevels(new TechLevels());
+			fcu2.setTechLevels(new TechLevels());
+
+			MacroCombatResult result = CombatSimulation.fleetCombat(fleets);
 
 //			System.out.println();
 //			System.out.println("******** RESULT ********");

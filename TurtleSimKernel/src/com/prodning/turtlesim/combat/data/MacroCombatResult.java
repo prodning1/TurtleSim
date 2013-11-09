@@ -2,8 +2,6 @@ package com.prodning.turtlesim.combat.data;
 
 import java.util.List;
 
-import com.prodning.turtlesim.combat.FleetCombatUnit;
-
 public class MacroCombatResult {
 	public static enum ResultType {
 		ATTACKER_WIN,

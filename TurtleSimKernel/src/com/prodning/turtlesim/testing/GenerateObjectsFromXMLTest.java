@@ -10,10 +10,10 @@ import org.xml.sax.SAXException;
 
 import com.prodning.turtlesim.combat.CombatSimulation;
 import com.prodning.turtlesim.combat.Fleet;
-import com.prodning.turtlesim.combat.Fleet.CombatGroup;
-import com.prodning.turtlesim.combat.FleetCombatUnit;
+import com.prodning.turtlesim.combat.data.FleetCombatUnit;
 import com.prodning.turtlesim.combat.data.MacroCombatResult;
 import com.prodning.turtlesim.combat.data.TechLevels;
+import com.prodning.turtlesim.combat.data.FleetCombatUnit.CombatGroup;
 import com.prodning.turtlesim.parse.EntityFileParser;
 
 public class GenerateObjectsFromXMLTest {
