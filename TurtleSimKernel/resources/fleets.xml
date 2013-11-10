@@ -23,4 +23,10 @@
 		<entity id="0007" count="1" />
 		<entity id="0008" count="1" />
 	</fleet>
+	<fleet id="F0003" name="attack" owner="jothcra">
+		<entity id="1001" count="50" />
+	</fleet>
+	<fleet id="F0004" name="defend" owner="phider">
+		<entity id="0002" count="1" />
+	</fleet>
 </fleets>

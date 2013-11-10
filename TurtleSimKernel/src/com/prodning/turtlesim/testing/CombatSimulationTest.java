@@ -19,13 +19,13 @@ import com.prodning.turtlesim.parse.EntityFileParser;
 
 public class CombatSimulationTest {
 	public static void main(String[] args) throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
-		CombatSettings.setDefenseToDebris(true);
+		CombatSettings.setDefenseToDebris(false);
 		CombatSettings.setShipDebrisRatio(0.3);
 		CombatSettings.setDefenseDebrisRatio(0.3);
 		
 		System.out.print("Parsing fleets...");
-		Fleet fleet1 = EntityFileParser.getFleetById("F0001");
-		Fleet fleet2 = EntityFileParser.getFleetById("F0002");
+		Fleet fleet1 = EntityFileParser.getFleetById("F0003");
+		Fleet fleet2 = EntityFileParser.getFleetById("F0004");
 		System.out.println("done\n");
 		
 		if(fleet1 == null || fleet2 == null)
@@ -47,11 +47,9 @@ public class CombatSimulationTest {
 		System.out.println("Attacking fleet: " + Fleet.compositionIdToName(fleet1.getFleetComposition()).toString());
 		System.out.println("Defending fleet: " + Fleet.compositionIdToName(fleet2.getFleetComposition()).toString());
 		System.out.println();
-		
-		TechLevels macroCombatInformation = new TechLevels();
 
 		System.out.print("Simulating combat...");
-		SimulationResult result = CombatSimulation.SimulateFleetCombat(fleets, 1000);
+		SimulationResult result = CombatSimulation.SimulateFleetCombat(fleets, 1);
 		System.out.println("done\n");
 		
 		System.out.println();

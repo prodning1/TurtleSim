@@ -17,7 +17,7 @@ import com.prodning.turtlesim.combat.data.SimulationResult;
 import com.prodning.turtlesim.combat.data.TechLevels;
 
 public class CombatSimulation {
-	static int verbosity = 0;
+	static int verbosity = 2;
 	
 	public static SimulationResult SimulateFleetCombat(List<FleetCombatUnit> fleetCombatUnits, int numberOfSimulations) {
 		SimulationResult result = new SimulationResult();

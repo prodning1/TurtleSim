@@ -37,9 +37,9 @@ public class SimulationResult {
 
 			// Get attacker and defender debris field contributions
 			for (CombatEntity entity : fcu.getLosses()) {
-				if (entity.getType() == CombatEntityType.SHIP || CombatSettings.getDefenseToDebris()) {
-					Resource debrisResource;
-
+				if (entity.getType() == CombatEntityType.SHIP || CombatSettings.getDefenseToDebris() == true) {
+					Resource debrisResource = new Resource(0,0,0);
+					
 					if (entity.getType() == CombatEntityType.SHIP)
 						debrisResource = EntityFileParser.getResourceById(entity.getEntityID()).scalar(CombatSettings.getShipDebrisRatio());
 					else if (entity.getType() == CombatEntityType.DEFENSE)
@@ -53,11 +53,9 @@ public class SimulationResult {
 					// no deut in debris field
 					debrisResource.setDeuterium(0);
 
-					debrisFieldThisCombat.addThis(debrisResource);
+					debrisFieldSum.addThis(debrisResource);
 				}
 			}
-
-			debrisFieldSum.addThis(debrisFieldThisCombat);
 
 			HashMap<String, Integer> newComposition = Fleet.compositionIdToName(fcu.getFleet().getFleetComposition());
 			HashMap<String, Integer> fleetCompositionSum;
