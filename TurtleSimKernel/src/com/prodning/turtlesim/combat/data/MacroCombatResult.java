@@ -1,9 +1,6 @@
 package com.prodning.turtlesim.combat.data;
 
-import java.util.ArrayList;
-
-import com.prodning.turtlesim.combat.CombatEntity;
-import com.prodning.turtlesim.combat.Fleet;
+import java.util.List;
 
 public class MacroCombatResult {
 	public static enum ResultType {
@@ -12,37 +9,21 @@ public class MacroCombatResult {
 		DRAW;
 	}
 	
-	private ArrayList<CombatEntity> attackerLosses;
-	private ArrayList<CombatEntity> defenderLosses;
-	private Fleet attackerRemains;
-	private Fleet defenderRemains;
+	private List<FleetCombatUnit> fleetCombatUnits;
 	private ResultType resultType;
 	private int rounds;
 	
-	public ArrayList<CombatEntity> getAttackerLosses() {
-		return attackerLosses;
-	} public void setAttackerLosses(ArrayList<CombatEntity> attackerLosses) {
-		this.attackerLosses = attackerLosses;
-	} public ArrayList<CombatEntity> getDefenderLosses() {
-		return defenderLosses;
-	} public void setDefenderLosses(ArrayList<CombatEntity> defenderLosses) {
-		this.defenderLosses = defenderLosses;
-	} public Fleet getAttackerRemains() {
-		return attackerRemains;
-	} public void setAttackerRemains(Fleet attackerRemains) {
-		this.attackerRemains = attackerRemains;
-	} public Fleet getDefenderRemains() {
-		return defenderRemains;
-	} public void setDefenderRemains(Fleet defenderRemains) {
-		this.defenderRemains = defenderRemains;
+	public List<FleetCombatUnit> getFleetCombatUnits() {
+		return fleetCombatUnits;
+	} public void setFleetCombatUnits(List<FleetCombatUnit> fleetCombatUnits) {
+		this.fleetCombatUnits = fleetCombatUnits;
 	} public ResultType getResultType() {
 		return resultType;
 	} public void setResultType(ResultType resultType) {
 		this.resultType = resultType;
 	} public int getRounds() {
 		return rounds;
-	}
-	public void setRounds(int rounds) {
+	} public void setRounds(int rounds) {
 		this.rounds = rounds;
 	}
 }

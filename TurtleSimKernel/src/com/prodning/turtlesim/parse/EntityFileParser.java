@@ -106,6 +106,7 @@ public class EntityFileParser {
 					"/entities/entity[@id='" + id + "']");
 
 			CombatEntityType type;
+			
 			switch (Integer.parseInt(id.substring(0, 1))) {
 			case 0:
 				type = CombatEntityType.DEFENSE;
@@ -177,7 +178,7 @@ public class EntityFileParser {
 				return null;
 			}
 
-			CombatEntity newCE = new CombatEntity(id, CombatEntityType.SHIP,
+			CombatEntity newCE = new CombatEntity(id, type,
 					structuralIntegrity, shieldStrength, weaponPower, rapidFire);
 
 			combatEntityCache.put(id, newCE);

@@ -24,4 +24,8 @@ public class TechLevels {
 	public int getShieldTech() {
 		return shieldTech;
 	}
+	
+	public TechLevels clone() {
+		return new TechLevels(weaponsTech, armorTech, shieldTech);
+	}
 }

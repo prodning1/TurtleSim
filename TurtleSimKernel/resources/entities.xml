@@ -319,7 +319,7 @@
 		<abbr>BS</abbr>
 
 		<structural_integrity>60000</structural_integrity>
-		<base_shields>2000</base_shields>
+		<base_shields>200</base_shields>
 		<base_weapon>1000</base_weapon>
 		<rapid_fire_list>
 			<rapid_fire id="1005" value="5" />

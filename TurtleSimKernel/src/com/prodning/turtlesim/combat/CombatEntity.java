@@ -118,9 +118,6 @@ public class CombatEntity implements Cloneable {
 		} else
 			result.setRapidfireSuccess(false);
 		
-		if(hull <= 0)
-			result.setTargetDestroyed(true);
-		
 		return result;
 	}
 	
