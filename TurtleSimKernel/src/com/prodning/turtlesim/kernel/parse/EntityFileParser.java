@@ -1,4 +1,4 @@
-package com.prodning.turtlesim.parse;
+package com.prodning.turtlesim.kernel.parse;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,10 +18,10 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.prodning.turtlesim.combat.CombatEntity;
-import com.prodning.turtlesim.combat.Fleet;
-import com.prodning.turtlesim.combat.CombatEntity.CombatEntityType;
-import com.prodning.turtlesim.data.Resource;
+import com.prodning.turtlesim.kernel.combat.CombatEntity;
+import com.prodning.turtlesim.kernel.combat.Fleet;
+import com.prodning.turtlesim.kernel.combat.CombatEntity.CombatEntityType;
+import com.prodning.turtlesim.kernel.data.Resource;
 
 public class EntityFileParser {
 	private static HashMap<String, CombatEntity> combatEntityCache = new HashMap<String, CombatEntity>();

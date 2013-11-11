@@ -1,4 +1,4 @@
-package com.prodning.turtlesim.combat.data;
+package com.prodning.turtlesim.kernel.combat.data;
 
 
 public class TechLevels {

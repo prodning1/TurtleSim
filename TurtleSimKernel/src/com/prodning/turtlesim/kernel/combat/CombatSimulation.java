@@ -1,20 +1,20 @@
 //Copyright 2013 Philip Rodning
 
-package com.prodning.turtlesim.combat;
+package com.prodning.turtlesim.kernel.combat;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import com.prodning.turtlesim.combat.CombatEntity.CombatEntityType;
-import com.prodning.turtlesim.combat.data.MacroCombatResult;
-import com.prodning.turtlesim.combat.data.FleetCombatUnit.CombatGroup;
-import com.prodning.turtlesim.combat.data.MacroCombatResult.ResultType;
-import com.prodning.turtlesim.combat.data.FleetCombatUnit;
-import com.prodning.turtlesim.combat.data.MicroCombatResult;
-import com.prodning.turtlesim.combat.data.SimulationResult;
-import com.prodning.turtlesim.combat.data.TechLevels;
+import com.prodning.turtlesim.kernel.combat.CombatEntity.CombatEntityType;
+import com.prodning.turtlesim.kernel.combat.data.FleetCombatUnit;
+import com.prodning.turtlesim.kernel.combat.data.MacroCombatResult;
+import com.prodning.turtlesim.kernel.combat.data.MicroCombatResult;
+import com.prodning.turtlesim.kernel.combat.data.SimulationResult;
+import com.prodning.turtlesim.kernel.combat.data.TechLevels;
+import com.prodning.turtlesim.kernel.combat.data.FleetCombatUnit.CombatGroup;
+import com.prodning.turtlesim.kernel.combat.data.MacroCombatResult.ResultType;
 
 public class CombatSimulation {
 	static int verbosity = 2;

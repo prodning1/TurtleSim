@@ -1,4 +1,4 @@
-package com.prodning.turtlesim.data;
+package com.prodning.turtlesim.kernel.data;
 
 public class Resource {
 	private int metal;

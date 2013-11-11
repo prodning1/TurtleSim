@@ -1,9 +1,9 @@
-package com.prodning.turtlesim.combat;
+package com.prodning.turtlesim.kernel.combat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.prodning.turtlesim.parse.EntityFileParser;
+import com.prodning.turtlesim.kernel.parse.EntityFileParser;
 
 /**
  * 

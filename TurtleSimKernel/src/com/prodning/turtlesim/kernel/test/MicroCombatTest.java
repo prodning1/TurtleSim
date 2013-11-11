@@ -1,11 +1,11 @@
-package com.prodning.turtlesim.test;
+package com.prodning.turtlesim.kernel.test;
 
 import java.util.HashMap;
 
-import com.prodning.turtlesim.combat.CombatEntity;
-import com.prodning.turtlesim.combat.CombatEntity.CombatEntityType;
-import com.prodning.turtlesim.combat.data.MicroCombatResult;
-import com.prodning.turtlesim.combat.data.TechLevels;
+import com.prodning.turtlesim.kernel.combat.CombatEntity;
+import com.prodning.turtlesim.kernel.combat.CombatEntity.CombatEntityType;
+import com.prodning.turtlesim.kernel.combat.data.MicroCombatResult;
+import com.prodning.turtlesim.kernel.combat.data.TechLevels;
 
 public class MicroCombatTest {
 	public static void main(String[] args) {

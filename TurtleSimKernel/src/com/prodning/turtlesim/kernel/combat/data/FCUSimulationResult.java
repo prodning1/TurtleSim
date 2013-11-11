@@ -1,8 +1,8 @@
-package com.prodning.turtlesim.combat.data;
+package com.prodning.turtlesim.kernel.combat.data;
 
 import java.util.HashMap;
 
-import com.prodning.turtlesim.data.Resource;
+import com.prodning.turtlesim.kernel.data.Resource;
 
 public class FCUSimulationResult {
 	private Resource totalLosses = new Resource();

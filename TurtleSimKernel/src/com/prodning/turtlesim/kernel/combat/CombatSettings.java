@@ -1,4 +1,4 @@
-package com.prodning.turtlesim.combat;
+package com.prodning.turtlesim.kernel.combat;
 
 public class CombatSettings {
 	private static Boolean defenseToDebris;

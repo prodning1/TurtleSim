@@ -1,4 +1,4 @@
-package com.prodning.turtlesim.test;
+package com.prodning.turtlesim.kernel.test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,13 +8,13 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.xml.sax.SAXException;
 
-import com.prodning.turtlesim.combat.CombatSimulation;
-import com.prodning.turtlesim.combat.Fleet;
-import com.prodning.turtlesim.combat.data.FleetCombatUnit;
-import com.prodning.turtlesim.combat.data.MacroCombatResult;
-import com.prodning.turtlesim.combat.data.TechLevels;
-import com.prodning.turtlesim.combat.data.FleetCombatUnit.CombatGroup;
-import com.prodning.turtlesim.parse.EntityFileParser;
+import com.prodning.turtlesim.kernel.combat.CombatSimulation;
+import com.prodning.turtlesim.kernel.combat.Fleet;
+import com.prodning.turtlesim.kernel.combat.data.FleetCombatUnit;
+import com.prodning.turtlesim.kernel.combat.data.MacroCombatResult;
+import com.prodning.turtlesim.kernel.combat.data.TechLevels;
+import com.prodning.turtlesim.kernel.combat.data.FleetCombatUnit.CombatGroup;
+import com.prodning.turtlesim.kernel.parse.EntityFileParser;
 
 public class GenerateObjectsFromXMLTest {
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {

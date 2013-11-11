@@ -1,7 +1,7 @@
-package com.prodning.turtlesim.test;
+package com.prodning.turtlesim.kernel.test;
 
-import com.prodning.turtlesim.data.Resource;
-import com.prodning.turtlesim.parse.EntityFileParser;
+import com.prodning.turtlesim.kernel.data.Resource;
+import com.prodning.turtlesim.kernel.parse.EntityFileParser;
 
 public class ResourceFromXMLTest {
 

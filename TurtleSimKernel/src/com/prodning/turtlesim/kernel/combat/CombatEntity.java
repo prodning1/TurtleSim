@@ -1,10 +1,10 @@
-package com.prodning.turtlesim.combat;
+package com.prodning.turtlesim.kernel.combat;
 
 import java.util.HashMap;
 import java.util.Random;
 
-import com.prodning.turtlesim.combat.data.MicroCombatResult;
-import com.prodning.turtlesim.combat.data.TechLevels;
+import com.prodning.turtlesim.kernel.combat.data.MicroCombatResult;
+import com.prodning.turtlesim.kernel.combat.data.TechLevels;
 
 
 public class CombatEntity implements Cloneable {

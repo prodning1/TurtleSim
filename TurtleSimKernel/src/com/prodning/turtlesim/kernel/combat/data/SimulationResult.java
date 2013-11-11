@@ -1,14 +1,14 @@
-package com.prodning.turtlesim.combat.data;
+package com.prodning.turtlesim.kernel.combat.data;
 
 import java.util.HashMap;
 
-import com.prodning.turtlesim.combat.CombatEntity;
-import com.prodning.turtlesim.combat.CombatEntity.CombatEntityType;
-import com.prodning.turtlesim.combat.CombatSettings;
-import com.prodning.turtlesim.combat.Fleet;
-import com.prodning.turtlesim.combat.data.MacroCombatResult.ResultType;
-import com.prodning.turtlesim.data.Resource;
-import com.prodning.turtlesim.parse.EntityFileParser;
+import com.prodning.turtlesim.kernel.combat.CombatEntity;
+import com.prodning.turtlesim.kernel.combat.CombatSettings;
+import com.prodning.turtlesim.kernel.combat.Fleet;
+import com.prodning.turtlesim.kernel.combat.CombatEntity.CombatEntityType;
+import com.prodning.turtlesim.kernel.combat.data.MacroCombatResult.ResultType;
+import com.prodning.turtlesim.kernel.data.Resource;
+import com.prodning.turtlesim.kernel.parse.EntityFileParser;
 
 public class SimulationResult {
 	private int numberOfSimulations = 0;

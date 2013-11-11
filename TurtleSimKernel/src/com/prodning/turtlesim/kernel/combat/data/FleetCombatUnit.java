@@ -1,9 +1,9 @@
-package com.prodning.turtlesim.combat.data;
+package com.prodning.turtlesim.kernel.combat.data;
 
 import java.util.ArrayList;
 
-import com.prodning.turtlesim.combat.CombatEntity;
-import com.prodning.turtlesim.combat.Fleet;
+import com.prodning.turtlesim.kernel.combat.CombatEntity;
+import com.prodning.turtlesim.kernel.combat.Fleet;
 
 public class FleetCombatUnit {
 	public static enum CombatGroup {

@@ -1,17 +1,17 @@
-package com.prodning.turtlesim.test;
+package com.prodning.turtlesim.kernel.test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.prodning.turtlesim.combat.CombatEntity;
-import com.prodning.turtlesim.combat.CombatEntity.CombatEntityType;
-import com.prodning.turtlesim.combat.CombatSimulation;
-import com.prodning.turtlesim.combat.Fleet;
-import com.prodning.turtlesim.combat.data.FleetCombatUnit;
-import com.prodning.turtlesim.combat.data.MacroCombatResult;
-import com.prodning.turtlesim.combat.data.FleetCombatUnit.CombatGroup;
-import com.prodning.turtlesim.combat.data.MacroCombatResult.ResultType;
-import com.prodning.turtlesim.combat.data.TechLevels;
+import com.prodning.turtlesim.kernel.combat.CombatEntity;
+import com.prodning.turtlesim.kernel.combat.CombatSimulation;
+import com.prodning.turtlesim.kernel.combat.Fleet;
+import com.prodning.turtlesim.kernel.combat.CombatEntity.CombatEntityType;
+import com.prodning.turtlesim.kernel.combat.data.FleetCombatUnit;
+import com.prodning.turtlesim.kernel.combat.data.MacroCombatResult;
+import com.prodning.turtlesim.kernel.combat.data.TechLevels;
+import com.prodning.turtlesim.kernel.combat.data.FleetCombatUnit.CombatGroup;
+import com.prodning.turtlesim.kernel.combat.data.MacroCombatResult.ResultType;
 
 public class MacroCombatTest {
 	public static void main(String[] args) {
